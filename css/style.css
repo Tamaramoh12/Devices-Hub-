@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color: #5D5D5D;
+    color: white;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+main{
+    margin: 15% 5%;
+    position: absolute;
+}
+#form{
+    float: left;
+    width: 30%;
+    padding-right: 10%;
+}
+#table{
+    float: right;
+    width: 60%;
+}
+table{
+    border: 1px black solid;
+    border-collapse: collapse;
+}
