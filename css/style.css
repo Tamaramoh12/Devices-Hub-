@@ -4,23 +4,28 @@ body{
 }
 header{
     background-color: #5D5D5D;
-    color: white;
+    text-align: center;
+    color: #F5F5DC;
     position: fixed;
     width: 100%;
-    text-align: center;
 }
 main{
-    margin: 15% 5%;
+    background-color: #D4D7E0;
+    margin-top: 80px;
+    width: 100%;
     position: absolute;
+    padding: 2%;
 }
 #form{
     float: left;
     width: 30%;
-    padding-right: 10%;
+}
+form label{
+    text-align: center;
 }
 #table{
     float: right;
-    width: 60%;
+    width: 70%;
 }
 table{
     border: 1px black solid;

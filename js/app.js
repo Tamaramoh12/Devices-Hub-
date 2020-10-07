@@ -25,18 +25,21 @@ Device.prototype.calculateUnitPrice = function(max,min){
     Math.floor;
     return random;
 }
-console.log(Device.unitPrice);
+
+//get from localStorage
+// localStorage.getItem(JSON.parse(Deviceobj));
+
 //targeting the form
 var form = document.getElementById('deviceForm');
 form.addEventListener('submit' , addDevice);
 //fill the category list
-// var menu = document.getElementById('category');
-// for(var i = 0; i < this.category.length; i++){  
-//     var option = document.createElement('option');
-//     menu.appendChild(option);
-//     option.textContent = 'test';
+var menu = document.getElementById('category');
+for(var i = 0; i < this.category.length; i++){  
+    var option = document.createElement('option');
+    menu.appendChild(option);
+    option.textContent = this.category;
     
-// }
+}
 //function that call whenever we click on submit button
 function addDevice(event){
     event.preventDefault(); //to stop the page from refreshing
