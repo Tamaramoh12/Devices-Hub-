@@ -3,104 +3,115 @@
 //array to store all objects
 var allDevices = [];
 
-if(localStorage.getItem('Devices')){
-    var localStorageData = JSON.parse(localStorage.getItem('Devices'));
-    for(var j = 0; j < localStorageData.length; j++){
-        new Device(localStorageData[j].name , localStorageData[j].category , localStorageData[j].quantity);
-        
+//get the data from local storage and make objects from it
+if(localStorage.getItem('All Devices')){
+    var localStorageData = JSON.parse(localStorage.getItem('All Devices'));
+    console.log('here: ' , localStorageData);
+    for(var r = 0; r < localStorageData.length; r++){
+        new Device(localStorageData[r].name , localStorageData[r].quantity , localStorageData[r].category);
     }
 }
 
-//Constructor
-function Device (name , category , quantity){
+
+//creating the constructor
+function Device(name , quantity , category){
     this.name = name;
-    this.category = category;
     this.quantity = quantity;
-    this.price = getRandomIntInclusive(350,750);
+    this.price = getRandomNumber(350 , 750);
+    this.category = category;
     allDevices.push(this);
 }
 
-//helper function - calculate unit price
-function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
+//function to check the unit price for each device
+function getRandomNumber(max , min) {
+    var random = Math.random();
+    random = (random * (max - min + 1) + min);
+    random = Math.floor(random); 
+    return random;
 }
 
-//targeting the table
+//creating the table
 var parentElement = document.getElementById('tableSection');
-var table = document.createElement('table');
+var table =  document.getElementById('addToPurchase');
 parentElement.appendChild(table);
-
-//table  header 
+//table header 
 var header = ['Device Name' , 'Quantity' , 'Unit Price' , 'Category'];
 function tableHeader(){
     var headerRow = document.createElement('tr');
     table.appendChild(headerRow);
-
     for(var i = 0; i < header.length; i++){
-        var cell = document.createElement('th');
-        headerRow.appendChild(cell);
-        cell.textContent = header[i];
+        var headerData = document.createElement('th');
+        headerRow.appendChild(headerData);
+        headerData.textContent = header[i];
     }
 }
 tableHeader();
 
-//table rows
+//table content
 Device.prototype.render = function(){
-    var addRow = document.createElement('tr');
-    table.appendChild(addRow);
+    var row = document.createElement('tr');
+    table.appendChild(row);
 
     var cell1 = document.createElement('td');
-    addRow.appendChild(cell1);
     cell1.textContent = this.name;
+    row.appendChild(cell1);
 
     var cell2 = document.createElement('td');
-    addRow.appendChild(cell2);
     cell2.textContent = this.quantity;
+    row.appendChild(cell2);
 
     var cell3 = document.createElement('td');
-    addRow.appendChild(cell3);
     cell3.textContent = this.price;
+    row.appendChild(cell3);
 
     var cell4 = document.createElement('td');
-    addRow.appendChild(cell4);
     cell4.textContent = this.category;
+    row.appendChild(cell4); 
 }
 
-//form
-var form = document.getElementById('purchaseForm');
-
+//targeting the form 
+var form = document.getElementById('addDeviceForm');
 form.addEventListener('submit' , addDevice);
 
 function addDevice(event){
     event.preventDefault();
 
-    var name =  event.target.deviceName.value;
-    var quantity = event.target.quantity.value;
-    var category = event.target.category.value;
+    var deviceName = event.target.name.value;
 
-    var newDevice = new Device(name , quantity , category);
-    newDevice.render();
-    form.reset();
+    var deviceCategory = event.target.category.value;
+     // var categoryList = document.getElementById('categoryList');
+    // var deviceCategory = categoryList.options[categoryList.selectedIndex].value; // to get the option 
 
-    localStorage.setItem('Devices' , JSON.stringify(allDevices));
-    totalPrices();
+    var deviceQuantity = event.target.quantity.value;
+
+    //to clear the fields after we click submit
+    // form.reset();
+
+    var deviceObject = new Device(deviceName , deviceQuantity , deviceCategory );
+    deviceObject.render();
+
+    allPrices();
+
+    localStorage.setItem('All Devices' , JSON.stringify(allDevices));
 }
-function totalPrices(){
+
+//function to calcualate all prices
+function allPrices(){
     var total = 0;
-    for(var i=0;i<allDevices.length; i++){
+    for(var i = 0; i < allDevices.length; i++){
         total += allDevices[i].price;
     }
-    var paragraph = document.getElementById('totalPar');
-    parentElement.appendChild(paragraph);
-    paragraph.textContent = 'Total: ' + total;
-}
+    var totalResult = document.getElementById('totals');
+    parentElement.appendChild(totalResult);
+    totalResult.textContent = 'Total: ' + total;
 
-function renderRow(){
-    for(var i= 0; i < allDevices.length; i++){
-        allDevices[i].render();
-    }
 }
-renderRow();
-totalPrices();
+allPrices();
+
+//function to display every object (global function/ will run when we get the data from local storage)
+function displayObjects(){
+    for(var j = 0; j < allDevices.length; j++){
+        allDevices[j].render();
+    }
+}    
+displayObjects();

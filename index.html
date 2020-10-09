@@ -4,45 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Device Hub</title>
+    <title>My Devices</title>
 </head>
 
 <body>
     <header>
-        <h1>
-            My Devices
-        </h1>
+        <h1>My Devices</h1>
     </header>
     <main>
-        <form action="" id="purchaseForm">
+        <section id="formSection">
+            <form action="" id="addDeviceForm">
+                <label for="name">Item Name</label><br>
+                <input type="text" id="name"><br><br>
 
-            <label for="deviceName"> Item Name</label><br>
-            <input type="text" id="deviceName">
-            <br><br>
+                <label for="category">Category</label><br>
+                <select name="category" id="categoryList">
+                    <option value="Mobile">Mobile</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Tablet">Tablet</option>
+                </select><br><br>
 
-            <label for="category">Category</label><br>
-            <select name="category" id="category">
-                <option value="mobile">Mobile</option>
-                <option value="laptop">Laptop</option>
-                <option value="tablet">Tablet</option>
-            </select>
-            <br><br>
+                <label for="quantity">Quantity</label><br>
+                <input type="text" id="quantity"><br><br>
 
-            <label for="quantity">Quantity</label><br>
-            <input type="number" id="quantity">
-            <br><br>
-            <input type="submit" name="Submit" id="submit">
+                <input type="submit" id="submit" value="Submit"><br><br>
+            </form>
+        </section>
 
-        </form>
         <section id="tableSection">
-            <p id="totalPar">
+            <table id="addToPurchase">
+
+            </table>
+            <p id="totals">
 
             </p>
         </section>
     </main>
-    <footer></footer>
     <script src="js/app.js"></script>
 </body>
 
