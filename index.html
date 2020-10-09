@@ -4,50 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>My Devices</title>
+    <title>Device Hub</title>
 </head>
 
 <body>
     <header>
-        <h1>My Devices</h1>
+        <h1>
+            My Devices
+        </h1>
     </header>
-
     <main>
-        <div id='form'>
-            <form action="" id="deviceForm">
-                <label for="itemName">Item Name</label>
-                <br>
-                <input type="text" id="itemName">
-                <br>
-                <br>
-                <label for="category">Category</label>
-                <br>
-                <select name="" id="category">
-                    <!-- <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option> -->
-                </select>
-                <br>
-                <br>
-                <label for="quantity">Quantity</label>
-                <br>
-                <input type="text" id="quantity">
-                <br>
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-        </div>
+        <form action="" id="purchaseForm">
 
-        <div id="table">
-            <table id="toPurchaseTable">
+            <label for="deviceName"> Item Name</label><br>
+            <input type="text" id="deviceName">
+            <br><br>
 
-            </table>
-            <p id="totalArea"></p>
-        </div>
+            <label for="category">Category</label><br>
+            <select name="category" id="category">
+                <option value="mobile">Mobile</option>
+                <option value="laptop">Laptop</option>
+                <option value="tablet">Tablet</option>
+            </select>
+            <br><br>
 
+            <label for="quantity">Quantity</label><br>
+            <input type="number" id="quantity">
+            <br><br>
+            <input type="submit" name="Submit" id="submit">
+
+        </form>
+        <section id="tableSection">
+            <p id="totalPar">
+
+            </p>
+        </section>
     </main>
+    <footer></footer>
     <script src="js/app.js"></script>
 </body>
 
